@@ -1,6 +1,7 @@
 # Vagrant Solr box
 
-Box to get a Solr environment quickly up and running in a VM. If you plan to modify the Solr configuration copy the content of this repo to a new repo.
+Box to get a Solr environment quickly up and running in a VM. If you plan to modify the Solr configuration copy the content of this repo to a new repo. 
+This fork adds integration with nutch.
 
 ## Running the box
 

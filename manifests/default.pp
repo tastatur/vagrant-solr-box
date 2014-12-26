@@ -26,7 +26,7 @@ class must-have {
     before => Apt::Ppa["ppa:webupd8team/java"],
   }
 
-  package { "oracle-java7-installer":
+  package { "oracle-java8-installer":
     ensure => present,
     require => Exec["apt-get update 2"],
   }
@@ -37,7 +37,7 @@ class must-have {
     user => "vagrant",
     path => "/usr/bin/:/bin/",
     require => Package["curl"],
-    before => Package["oracle-java7-installer"],
+    before => Package["oracle-java8-installer"],
     logoutput => true,
   }
 
@@ -83,7 +83,7 @@ class must-have {
     provider => "upstart",
     #hasrestart => true,
     #hasstatus => true,
-    require => [ File["/etc/init/solr.conf"], File["/etc/init.d/solr"], Package["oracle-java7-installer"] ],
+    require => [ File["/etc/init/solr.conf"], File["/etc/init.d/solr"], Package["oracle-java8-installer"] ],
   }
 }
 
