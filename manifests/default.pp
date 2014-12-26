@@ -47,7 +47,7 @@ class must-have {
   }
 
   exec { "download_solr":
-    command => "curl -L http://apache.komsys.org/lucene/solr/4.7.0/solr-4.7.0.tgz | tar zx --directory=/vagrant/solr --strip-components 1",
+    command => "curl -L http://apache.uib.no/lucene/solr/4.10.3/solr-4.10.3.tgz | tar zx --directory=/vagrant/solr --strip-components 1",
     cwd => "/vagrant",
     user => "vagrant",
     path => "/usr/bin/:/bin/",
@@ -64,6 +64,16 @@ class must-have {
     ensure => link,
     target => "/etc/init/solr.conf",
     require => File["/etc/init/solr.conf"],
+  }
+
+  file { "/vagrant/solr/example/solr/collection1/conf/schema.xml":
+    source => "/vagrant/conf/schema.xml",
+    require => Exec["download_solr"]
+  }
+
+  file { "/vagrant/solr/example/solr/collection1/conf/german_stop.txt":
+    source => "/vagrant/conf/german_stop.txt",
+    require => Exec["download_solr"]
   }
 
   service { "solr":

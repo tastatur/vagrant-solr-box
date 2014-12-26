@@ -16,6 +16,9 @@ local.properties
 .settings/
 .loadpath
 
+modules/
+pip-log.txt
+
 # External tool builders
 .externalToolBuilders/
 
